@@ -1,0 +1,12 @@
+default:
+  suites:
+    register_recruiter:
+      contexts:
+        - 'App\Features\RegisterRecruiterContext'
+      paths:
+        - '%paths.base%/features/register_recruiter.feature'
+    register_job_seeker:
+      contexts:
+        - 'App\Features\RegisterJobSeekerContext'
+      paths:
+        - '%paths.base%/features/register_job_seeker.feature'
