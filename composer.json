@@ -60,12 +60,14 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "MChabour\\Domain\\": "domain/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/",
+            "MChabour\\Domain\\Tests\\": "domain/tests/"
         }
     },
     "replace": {
