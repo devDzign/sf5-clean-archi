@@ -71,7 +71,8 @@
         "psr-4": {
             "App\\Tests\\": "tests/",
             "MChabour\\Domain\\Tests\\": "domain/tests/",
-            "App\\Features\\": "features/bootstrap"
+            "App\\Features\\": "features/bootstrap",
+            "MChabour\\Domain\\Tests\\": "domain/tests/"
         }
     },
     "replace": {
