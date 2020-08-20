@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"job_seeker" = "JobSeeker", "recruiter" = "Recruiter"})
  */
-class User implements UserInterface
+abstract class User implements UserInterface
 {
     /**
      * @var UuidInterface

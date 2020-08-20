@@ -26,6 +26,7 @@ class NonUniqueEmailValidator extends ConstraintValidator
 
     public function validate($value, Constraint $constraint)
     {
+
         if (!$this->userGateway->isEmailUnique($value)) {
             $this->context->buildViolation($constraint->message)->addViolation();
         }

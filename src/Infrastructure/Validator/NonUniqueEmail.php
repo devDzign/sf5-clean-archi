@@ -13,5 +13,5 @@ class NonUniqueEmail extends Constraint
      * Any public properties become valid options for the annotation.
      * Then, use these in your validator class.
      */
-    public $message = 'this email address already exists.';
+    public $message = 'This email address already exists.';
 }
