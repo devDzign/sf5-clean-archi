@@ -35,3 +35,6 @@ services:
         resource: '../src/UserInterface/Controller/'
         tags: ['controller.service_arguments']
 
+    MChabour\Domain\Security\Gateway\JobSeekerGatewayInterface: '@App\Infrastructure\Adapter\Repository\InMemory\JobSeekerInMemory'
+    MChabour\Domain\Security\Gateway\RecruiterGatewayInterface: '@App\Infrastructure\Adapter\Repository\InMemory\RecruiterInMemory'
+
