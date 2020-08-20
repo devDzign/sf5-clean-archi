@@ -17,19 +17,28 @@
 
     <testsuites>
         <testsuite name="unit">
-            <directory>tests/Unit</directory>
+            <directory>domain/tests</directory>
         </testsuite>
         <testsuite name="integration">
-            <directory>tests/Integration</directory>
+            <directory>tests/IntegrationTests</directory>
         </testsuite>
         <testsuite name="system">
-            <directory>tests/System</directory>
+            <directory>tests/SystemTests</directory>
+        </testsuite>
+        <testsuite name="end_to_end">
+            <directory>tests/EndToEndTests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">domain/src</directory>
             <directory suffix=".php">src</directory>
+            <exclude>
+                <directory suffix=".tpl.php">src</directory>
+                <directory>src/Infrastructure/Maker</directory>
+                <file>src/Kernel.php</file>
+            </exclude>
         </whitelist>
     </filter>
 
