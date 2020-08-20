@@ -56,4 +56,12 @@ class RegistrationType extends AbstractType
             ])
         ;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getBlockPrefix()
+    {
+        return "registration";
+    }
 }

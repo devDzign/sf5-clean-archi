@@ -9,27 +9,22 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class RegistrationRecruiterType extends AbstractType
+class RegistrationRecruiterType extends RegistrationType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add("companyName", TextType::class, [
-                "label" => "Nom de la companie :",
+        parent::buildForm($builder, $options);
+
+        $builder->add(
+            "companyName",
+            TextType::class,
+            [
+                "label"       => "Raison sociale",
                 "constraints" => [
-                    new NotBlank()
-                ]
-            ])
-
-        ;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getParent()
-    {
-        return RegistrationType::class;
+                    new NotBlank(),
+                ],
+            ]
+        );
     }
 
 

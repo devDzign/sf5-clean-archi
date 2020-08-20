@@ -3,28 +3,33 @@
 namespace App\Infrastructure\Adapter\Repository\InMemory;
 
 use MChabour\Domain\Security\Gateway\RecruiterGatewayInterface;
+use MChabour\Domain\Security\Model\Recruiter;
 use MChabour\Domain\Security\Model\User;
+use Ramsey\Uuid\Uuid;
 
 class RecruiterInMemory implements RecruiterGatewayInterface
 {
-
-    public function register(User $user): void
-    {
-        // TODO: Implement register() method.
-    }
-
     /**
-     * @param string $email
-     *
-     * @return bool
+     * @inheritDoc
      */
-    public function isEmailUnique(string $email): bool
+    public function isEmailUnique(?string $email): bool
     {
-        return 'used@mail.fr' !== $email;
+        return $email != "used@email.com";
     }
+
 
     public function getUserByMail(string $email): ?User
     {
-        return  new User();
+        if ($email === "used@email.com") {
+            return null;
+        }
+
+        return new Recruiter(Uuid::uuid4(), 'mourad', 'chabour', 'Company co', 'mchabour@mail.com', 'password');
+    }
+
+
+    public function register(Recruiter $recruiter): void
+    {
+        // TODO: Implement register() method.
     }
 }

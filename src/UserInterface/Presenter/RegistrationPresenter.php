@@ -4,23 +4,22 @@ namespace App\UserInterface\Presenter;
 
 use App\UserInterface\ViewModel\RegistrationViewModel;
 use MChabour\Domain\Security\Gateway\RecruiterGatewayInterface;
-use MChabour\Domain\Security\Gateway\UserGatewayInterface;
 use MChabour\Domain\Security\Presenter\RegistrationPresenterInterface;
 use MChabour\Domain\Security\Response\RegistrationResponse;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class RegistrationPresenter implements RegistrationPresenterInterface
 {
     /**
-     * @var FlashBagInterface
+     * @var SessionInterface
      */
-    private FlashBagInterface $flashBag;
+    private SessionInterface $session;
 
     /**
      * @var RegistrationViewModel
      */
     private RegistrationViewModel $viewModel;
+
     /**
      * @var RecruiterGatewayInterface
      */
@@ -30,14 +29,12 @@ class RegistrationPresenter implements RegistrationPresenterInterface
     /**
      * RegistrationPresenter constructor.
      *
-     * @param FlashBagInterface    $flashBag
+     * @param SessionInterface    $session
      * @param RecruiterGatewayInterface $userGateway
      */
-    public function __construct(FlashBagInterface $flashBag, RecruiterGatewayInterface $userGateway)
+    public function __construct(SessionInterface $session, RecruiterGatewayInterface $userGateway)
     {
-        $this->flashBag = $flashBag;
-
-
+        $this->session = $session;
         $this->userGateway = $userGateway;
     }
 
@@ -45,9 +42,9 @@ class RegistrationPresenter implements RegistrationPresenterInterface
     {
         $this->viewModel = new RegistrationViewModel($this->userGateway->getUserByMail($response->getEmail()));
 
-        $this->flashBag->add(
+        $this->session->getFlashBag()->add(
             "success",
-            "Bienvenue sur Code Challenge ! Votre inscription a été effectuée avec succès !"
+            "Bienvenue sur mon site ! Votre inscription a été effectuée avec succès !"
         );
     }
 
