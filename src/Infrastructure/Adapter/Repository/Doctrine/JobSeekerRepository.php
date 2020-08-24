@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Adapter\Repository\Doctrine;
 
-use App\Infrastructure\Entity\JobSeeker;
+use App\Infrastructure\Doctrine\Entity\JobSeeker;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use MChabour\Domain\Security\Gateway\JobSeekerGatewayInterface;
