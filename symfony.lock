@@ -1,4 +1,7 @@
 {
+    "beberlei/assert": {
+        "version": "v3.2.7"
+    },
     "behat/behat": {
         "version": "v3.7.0"
     },
@@ -7,6 +10,9 @@
     },
     "behat/transliterator": {
         "version": "v1.3.0"
+    },
+    "brick/math": {
+        "version": "0.9.1"
     },
     "composer/package-versions-deprecated": {
         "version": "1.10.99.1"
@@ -44,6 +50,9 @@
     "doctrine/common": {
         "version": "2.13.3"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.4.3"
+    },
     "doctrine/dbal": {
         "version": "2.10.2"
     },
@@ -60,6 +69,18 @@
             "./config/packages/prod/doctrine.yaml",
             "./src/Entity/.gitignore",
             "./src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "e5b542d4ef47d8a003c91beb35650c76907f7e53"
+        },
+        "files": [
+            "./src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -126,6 +147,9 @@
     "php": {
         "version": "7.4"
     },
+    "php-webdriver/webdriver": {
+        "version": "1.8.2"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -149,6 +173,24 @@
     },
     "psr/log": {
         "version": "1.1.3"
+    },
+    "ramsey/collection": {
+        "version": "1.1.0"
+    },
+    "ramsey/uuid": {
+        "version": "4.1.1"
+    },
+    "ramsey/uuid-doctrine": {
+        "version": "1.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.3",
+            "ref": "471aed0fbf5620b8d7f92b7a5ebbbf6c0945c27a"
+        },
+        "files": [
+            "./config/packages/ramsey_uuid_doctrine.yaml"
+        ]
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -215,9 +257,6 @@
         "files": [
             "./config/packages/dev/debug.yaml"
         ]
-    },
-    "symfony/debug-pack": {
-        "version": "v1.0.8"
     },
     "symfony/dependency-injection": {
         "version": "v5.1.3"
@@ -358,8 +397,8 @@
     "symfony/options-resolver": {
         "version": "v5.1.3"
     },
-    "symfony/orm-pack": {
-        "version": "v2.0.0"
+    "symfony/panther": {
+        "version": "v0.7.1"
     },
     "symfony/phpunit-bridge": {
         "version": "4.3",
@@ -397,11 +436,11 @@
     "symfony/polyfill-php80": {
         "version": "v1.18.1"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.18.1"
+    },
     "symfony/process": {
         "version": "v5.1.3"
-    },
-    "symfony/profiler-pack": {
-        "version": "v1.0.5"
     },
     "symfony/property-access": {
         "version": "v5.1.3"
@@ -450,9 +489,6 @@
     "symfony/serializer": {
         "version": "v5.1.3"
     },
-    "symfony/serializer-pack": {
-        "version": "v1.0.3"
-    },
     "symfony/service-contracts": {
         "version": "v2.1.3"
     },
@@ -461,9 +497,6 @@
     },
     "symfony/string": {
         "version": "v5.1.3"
-    },
-    "symfony/test-pack": {
-        "version": "v1.0.6"
     },
     "symfony/translation": {
         "version": "3.3",
@@ -498,8 +531,8 @@
             "./templates/base.html.twig"
         ]
     },
-    "symfony/twig-pack": {
-        "version": "v1.0.0"
+    "symfony/uid": {
+        "version": "v5.1.3"
     },
     "symfony/validator": {
         "version": "4.3",

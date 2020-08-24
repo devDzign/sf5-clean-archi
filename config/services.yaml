@@ -22,8 +22,7 @@ services:
 
     App\Infrastructure\:
         resource: '../src/Infrastructure'
-        exclude:
-            - '../src/Infrastructure/{Test}'
+        exclude: '../src/Infrastructure/{Test}'
 
     App\UserInterface\:
         resource: '../src/UserInterface'
@@ -31,7 +30,9 @@ services:
     MChabour\Domain\:
         resource: '../domain/src'
 
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
     App\UserInterface\Controller\:
-        resource: '../src/UserInterface/Controller/'
+        resource: '../src/UserInterface/Controller'
         tags: ['controller.service_arguments']
 

@@ -10,7 +10,7 @@ class HeathController extends AbstractController
 {
 
     /**
-     * @Route("/", name="heath", methods={"GET"})
+     * @Route("/heath", name="heath", methods={"GET"})
      * @return Response
      */
     public function __invoke()
