@@ -44,10 +44,12 @@
 
     <extensions>
         <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
+        <extension class="Symfony\Component\Panther\ServerExtension" />
     </extensions>
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
+<!--        <listener class="Symfony\Component\Panther\ServerListener" />-->
     </listeners>
 
     <logging>
