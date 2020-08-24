@@ -3,7 +3,6 @@
 namespace App\Infrastructure\Validator;
 
 use MChabour\Domain\Security\Gateway\RecruiterGatewayInterface;
-use MChabour\Domain\Security\Gateway\UserGatewayInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
@@ -12,22 +11,22 @@ class NonUniqueEmailValidator extends ConstraintValidator
     /**
      * @var RecruiterGatewayInterface
      */
-    private RecruiterGatewayInterface $userGateway;
+    private RecruiterGatewayInterface $recruiterGateway;
 
     /**
      * NonUniqueEmailValidator constructor.
      *
-     * @param RecruiterGatewayInterface $userGateway
+     * @param RecruiterGatewayInterface $recruiterGateway
      */
-    public function __construct(RecruiterGatewayInterface $userGateway)
+    public function __construct(RecruiterGatewayInterface $recruiterGateway)
     {
-        $this->userGateway = $userGateway;
+        $this->recruiterGateway = $recruiterGateway;
     }
 
     public function validate($value, Constraint $constraint)
     {
 
-        if (!$this->userGateway->isEmailUnique($value)) {
+        if (!$this->recruiterGateway->isEmailUnique($value)) {
             $this->context->buildViolation($constraint->message)->addViolation();
         }
     }

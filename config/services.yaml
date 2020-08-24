@@ -13,17 +13,16 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    App\:
-        resource: '../src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Kernel.php'
-            - '../src/Tests/'
+#    App\:
+#        resource: '../src/'
+#        exclude:
+#            - '../src/DependencyInjection/'
+#            - '../src/Kernel.php'
+#            - '../src/Tests/'
 
     App\Infrastructure\:
         resource: '../src/Infrastructure'
-        exclude:
-            - '../src/Infrastructure/{Test}'
+        exclude: '../src/Infrastructure/{Test}'
 
     App\UserInterface\:
         resource: '../src/UserInterface'
@@ -31,10 +30,9 @@ services:
     MChabour\Domain\:
         resource: '../domain/src'
 
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
     App\UserInterface\Controller\:
         resource: '../src/UserInterface/Controller'
         tags: ['controller.service_arguments']
-
-    MChabour\Domain\Security\Gateway\JobSeekerGatewayInterface: '@App\Infrastructure\Adapter\Repository\InMemory\JobSeekerInMemory'
-    MChabour\Domain\Security\Gateway\RecruiterGatewayInterface: '@App\Infrastructure\Adapter\Repository\InMemory\RecruiterInMemory'
 

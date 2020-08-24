@@ -2,7 +2,7 @@
 
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="vendor/bin/.phpunit/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="bin/.phpunit/phpunit.xsd"
          backupGlobals="false"
          colors="true"
          bootstrap="tests/bootstrap.php"
@@ -25,7 +25,7 @@
         <testsuite name="system">
             <directory>tests/SystemTests</directory>
         </testsuite>
-        <testsuite name="end_to_end">
+        <testsuite name="e2e">
             <directory>tests/EndToEndTests</directory>
         </testsuite>
     </testsuites>
@@ -42,15 +42,16 @@
         </whitelist>
     </filter>
 
-    <extensions>
-        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
-        <extension class="Symfony\Component\Panther\ServerExtension" />
-    </extensions>
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
-<!--        <listener class="Symfony\Component\Panther\ServerListener" />-->
     </listeners>
+
+    <extensions>
+        <extension class="Symfony\Component\Panther\ServerExtension" />
+        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
+    </extensions>
+
 
     <logging>
         <log type="coverage-html" target="var/coverage" lowUpperBound="35" highLowerBound="70"/>

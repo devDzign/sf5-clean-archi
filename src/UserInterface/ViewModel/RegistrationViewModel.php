@@ -3,7 +3,6 @@
 namespace App\UserInterface\ViewModel;
 
 use MChabour\Domain\Security\Model\User;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 class RegistrationViewModel
 {
