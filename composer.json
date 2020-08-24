@@ -45,7 +45,6 @@
     },
     "require-dev": {
         "behat/behat": "^3.7",
-        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "squizlabs/php_codesniffer": "^3.5",
         "symfony/browser-kit": "^5.1",
         "symfony/css-selector": "^5.1",
@@ -94,16 +93,10 @@
             "@database-panther",
             "@database-test"
         ],
-        "database-prod": [
-            "php bin/console doctrine:database:drop --if-exists --force --env=prod",
-            "php bin/console doctrine:database:create --env=prod",
-            "php bin/console doctrine:schema:update --force --env=prod"
-        ],
         "database-panther": [
-            "php bin/console doctrine:database:drop --if-exists --force --env=panther",
-            "php bin/console doctrine:database:create --env=panther",
-            "php bin/console doctrine:schema:update --force --env=panther",
-            "php bin/console doctrine:fixtures:load -n --env=panther"
+            "php bin/console doctrine:database:drop --if-exists --force --env=system",
+            "php bin/console doctrine:database:create --env=system",
+            "php bin/console doctrine:schema:update --force --env=system"
         ],
         "database-test": [
             "php bin/console doctrine:database:drop --if-exists --force --env=test",
