@@ -51,6 +51,7 @@
         "symfony/debug-bundle": "^5.1",
         "symfony/maker-bundle": "^1.0",
         "symfony/monolog-bundle": "^3.0",
+        "symfony/panther": "^0.7.1",
         "symfony/phpunit-bridge": "^5.1",
         "symfony/stopwatch": "^5.1",
         "symfony/twig-bundle": "^5.1",
@@ -87,11 +88,27 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
-        "prepare-system": [
-            "php bin/console d:d:d --if-exists -f --env=system",
-            "php bin/console d:d:c  --env=system",
-            "php bin/console d:s:u -f --env=system",
-            "php bin/console d:f:l -n --env=system"
+        "database": [
+            "@database-dev",
+            "@database-panther",
+            "@database-test"
+        ],
+        "database-panther": [
+            "php bin/console doctrine:database:drop --if-exists --force --env=system",
+            "php bin/console doctrine:database:create --env=system",
+            "php bin/console doctrine:schema:update --force --env=system"
+        ],
+        "database-test": [
+            "php bin/console doctrine:database:drop --if-exists --force --env=test",
+            "php bin/console doctrine:database:create --env=test",
+            "php bin/console doctrine:schema:update --force --env=test",
+            "php bin/console doctrine:fixtures:load -n --env=test"
+        ],
+        "database-dev": [
+            "php bin/console doctrine:database:drop --if-exists --force",
+            "php bin/console doctrine:database:create",
+            "php bin/console doctrine:schema:update --force",
+            "php bin/console doctrine:fixtures:load -n"
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
