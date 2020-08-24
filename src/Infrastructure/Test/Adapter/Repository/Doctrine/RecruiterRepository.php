@@ -26,7 +26,7 @@ class RecruiterRepository implements RecruiterGatewayInterface
 
     public function getUserByMail(string $email): ?User
     {
-        if ($email !== "used@email.com") {
+        if ($email === "used@email.com") {
             return null;
         }
 

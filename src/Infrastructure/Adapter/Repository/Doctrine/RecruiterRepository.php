@@ -2,8 +2,7 @@
 
 namespace App\Infrastructure\Adapter\Repository\Doctrine;
 
-use App\Infrastructure\Entity\JobSeeker;
-use App\Infrastructure\Entity\Recruiter;
+use App\Infrastructure\Doctrine\Entity\Recruiter;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -26,7 +25,7 @@ class RecruiterRepository extends ServiceEntityRepository implements RecruiterGa
 
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, JobSeeker::class);
+        parent::__construct($registry, Recruiter::class);
     }
 
     /**

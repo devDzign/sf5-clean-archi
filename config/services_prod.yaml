@@ -1,6 +1,0 @@
-imports:
-    - { resource: services.yaml }
-
-services:
-   MChabour\Domain\Security\Gateway\JobSeekerGatewayInterface: '@App\Infrastructure\Adapter\Repository\Doctrine\JobSeekerRepository'
-   MChabour\Domain\Security\Gateway\RecruiterGatewayInterface: '@App\Infrastructure\Adapter\Repository\Doctrine\RecruiterRepository'
