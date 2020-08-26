@@ -18,7 +18,7 @@ class RegistrationRecuiterTest extends PantherTestCase
             [
                 "registration[firstName]" => "mourad",
                 "registration[lastName]" => "chabour",
-                "registration[email]" => "email2@email.com",
+                "registration[email]" => sprintf("email%s@email.com", random_int(1, 99999)),
                 "registration[plainPassword][first]" => "admin1234",
                 "registration[plainPassword][second]" => "admin1234",
                 "registration[companyName]" => "Company Co",
@@ -26,6 +26,8 @@ class RegistrationRecuiterTest extends PantherTestCase
         );
 
         $client->submit($form);
+
+        $client->takeScreenshot('var\screen.png');
 
 //        $client->getWebDriver()->findElement(WebDriverBy::className('btn'))->click();
         $client->waitFor('.FlashBag');

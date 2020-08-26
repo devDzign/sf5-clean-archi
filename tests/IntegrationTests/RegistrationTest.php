@@ -21,7 +21,7 @@ class RegistrationTest extends IntegrationTestCase
             [
                 "registration[firstName]"             => "mourad",
                 "registration[lastName]"              => "chabour",
-                "registration[email]"                 => "mchabour@test.fr",
+                "registration[email]"                 => "used@mail.com",
                 "registration[companyName]"           => "Company co",
                 "registration[plainPassword][first]"  => "test1234",
                 "registration[plainPassword][second]" => "test1234",

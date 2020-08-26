@@ -2,10 +2,7 @@
 
 namespace App\Infrastructure\Test\Adapter\Repository\Doctrine;
 
-use MChabour\CodeChallenge\Domain\Security\Entity\Participant;
-use MChabour\CodeChallenge\Domain\Security\Gateway\ParticipantGateway;
-use MChabour\Domain\Security\Gateway\RecruiterGatewayInterface;
-use MChabour\Domain\Security\Model\Recruiter;
+use MChabour\Domain\Security\Gateway\UserGatewayInterface;
 use MChabour\Domain\Security\Model\User;
 use Ramsey\Uuid\Uuid;
 
@@ -13,7 +10,7 @@ use Ramsey\Uuid\Uuid;
  * Class UserRepository
  * @package App\Infrastructure\Test\Adapter\Repository
  */
-class RecruiterRepository implements RecruiterGatewayInterface
+class UserRepository implements UserGatewayInterface
 {
     /**
      * @inheritDoc
@@ -30,11 +27,6 @@ class RecruiterRepository implements RecruiterGatewayInterface
             return null;
         }
 
-        return new Recruiter(Uuid::uuid4(), 'mourad', 'chabour', 'Company co', 'used@mail.com', 'password');
-    }
-
-    public function register(Recruiter $recruiter): void
-    {
-        // TODO: Implement register() method.
+        return new User(Uuid::uuid4(), 'mourad', 'chabour', 'used@mail.com', password_hash("password", PASSWORD_ARGON2I));
     }
 }
