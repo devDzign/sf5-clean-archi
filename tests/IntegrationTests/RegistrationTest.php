@@ -21,7 +21,7 @@ class RegistrationTest extends IntegrationTestCase
             [
                 "registration[firstName]"             => "mourad",
                 "registration[lastName]"              => "chabour",
-                "registration[email]"                 => "mchabour@test.fr",
+                "registration[email]"                 => "new_used@email.com",
                 "registration[companyName]"           => "Company co",
                 "registration[plainPassword][first]"  => "test1234",
                 "registration[plainPassword][second]" => "test1234",
@@ -29,6 +29,7 @@ class RegistrationTest extends IntegrationTestCase
         );
 
         $client->submit($form);
+
 
         $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
     }

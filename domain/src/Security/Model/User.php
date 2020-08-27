@@ -35,6 +35,36 @@ class User
     protected ?string $password;
 
 
+    public function __construct(
+        UuidInterface $id,
+        ?string $firstName,
+        ?string $lastName,
+        ?string $email,
+        ?string $password
+    ) {
+        $this->id = $id;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->email = $email;
+        $this->password = $password;
+    }
+
+    /**
+     * @param RegistrationRequest $request
+     *
+     * @return static
+     */
+    public static function createUser(RegistrationRequest $request): self
+    {
+        return new self(
+            Uuid::uuid4(),
+            $request->getFirstName(),
+            $request->getLastName(),
+            $request->getEmail(),
+            password_hash($request->getPlainPassword(), PASSWORD_ARGON2I)
+        );
+    }
+
     /**
      * @return UuidInterface
      */
