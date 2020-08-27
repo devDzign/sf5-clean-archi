@@ -15,7 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class RegistrationController extends AbstractController
 {
 
-
     /**
      * @Route("/registration", name="app.registration", methods={"GET", "POST"})
      * @param Request               $request

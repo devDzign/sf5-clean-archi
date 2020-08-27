@@ -11,6 +11,7 @@ use MChabour\Domain\Security\Request\RegistrationRequest;
 use MChabour\Domain\Security\Response\RegistrationResponse;
 use MChabour\Domain\Security\UseCase\Registration;
 use PHPUnit\Framework\TestCase;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class RegistrationTest
@@ -52,8 +53,21 @@ class RegistrationTest extends TestCase
             {
             }
 
-            public function getUserByMail(string $email): ?User
+            public function getUserByMail(string $email): ?Recruiter
             {
+
+                if ($email !== "new_used@email.com") {
+                    return null;
+                }
+
+                return new Recruiter(
+                    Uuid::uuid4(),
+                    'mourad',
+                    'chabour',
+                    'Company co',
+                    'new_used@email.com',
+                    'password'
+                );
             }
         };
 
@@ -66,14 +80,14 @@ class RegistrationTest extends TestCase
             'mourad',
             'chabour',
             'Factory Co',
-            'mchabour@codechallenge.fr',
+            'new_use@email.com',
             'password'
         );
 
         $this->useCase->execute($request, $this->presenter);
 
         $this->assertInstanceOf(RegistrationResponse::class, $this->presenter->response);
-        $this->assertEquals('mchabour@codechallenge.fr', $this->presenter->response->getEmail());
+        $this->assertEquals('new_use@email.com', $this->presenter->response->getEmail());
     }
 
     /**
@@ -115,13 +129,13 @@ class RegistrationTest extends TestCase
         yield ["mourad", "chabour", "", "mchabour@codechallenge.fr", "password"];
 
         // case password failed
-        yield ["mourad", "chabour","company name", "mchabour@codechallenge.fr", ""];
-        yield ["mourad", "chabour","company name", "mchabour@codechallenge.fr", "faild"];
+        yield ["mourad", "chabour", "company name", "mchabour@codechallenge.fr", ""];
+        yield ["mourad", "chabour", "company name", "mchabour@codechallenge.fr", "faild"];
 
         // case of mail failed
-        yield ["mourad", "chabour","company name", "", "password"];
-        yield ["mourad", "chabour","company name", "mchabour", "password"];
-        yield ["mourad", "chabour","company name", "fail", "password"];
-        yield ["mourad", "chabour","company name", "usedEmail@codechallenge.fr", "password"];
+        yield ["mourad", "chabour", "company name", "", "password"];
+        yield ["mourad", "chabour", "company name", "mchabour", "password"];
+        yield ["mourad", "chabour", "company name", "fail", "password"];
+        yield ["mourad", "chabour", "company name", "usedEmail@codechallenge.fr", "password"];
     }
 }

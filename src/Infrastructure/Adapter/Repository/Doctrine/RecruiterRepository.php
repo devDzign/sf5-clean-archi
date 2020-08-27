@@ -76,7 +76,7 @@ class RecruiterRepository extends ServiceEntityRepository implements RecruiterGa
      *
      * @return User|null
      */
-    public function getUserByMail(string $email): ?User
+    public function getUserByMail(string $email): ?RecruiterModel
     {
         $doctrineUser =  $this->findOneByEmail($email);
 

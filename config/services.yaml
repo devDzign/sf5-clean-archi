@@ -36,3 +36,5 @@ services:
         resource: '../src/UserInterface/Controller'
         tags: ['controller.service_arguments']
 
+    MChabour\Domain\Security\Gateway\RecruiterGatewayInterface: '@App\Infrastructure\Adapter\Repository\Doctrine\RecruiterRepository'
+    MChabour\Domain\Security\Gateway\UserGatewayInterface: '@App\Infrastructure\Adapter\Repository\Doctrine\UserRepository'

@@ -4,6 +4,7 @@ namespace App\Infrastructure\Doctrine\DataFixtures;
 
 use App\Infrastructure\Doctrine\Entity\JobSeeker;
 use App\Infrastructure\Doctrine\Entity\Recruiter;
+use App\Infrastructure\Doctrine\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
@@ -14,7 +15,7 @@ class UserFixtures extends Fixture
     {
 
         $recruiter = new Recruiter();
-        $jobSeeker = new JobSeeker();
+        $jobSeeker = new User();
 
         $recruiter->setId(Uuid::uuid4())
             ->setFirstName('Mourad')
