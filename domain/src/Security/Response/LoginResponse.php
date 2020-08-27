@@ -44,9 +44,4 @@ class LoginResponse
     {
         return $this->passwordValid;
     }
-
-
-
-
-
 }

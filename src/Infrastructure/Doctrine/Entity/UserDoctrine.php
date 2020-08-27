@@ -179,7 +179,7 @@ abstract class UserDoctrine implements UserInterface
 
     public function getRoles()
     {
-        return ["ROLE_USer"];
+        return ["ROLE_USER"];
     }
 
     public function getSalt()

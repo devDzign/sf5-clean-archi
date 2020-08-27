@@ -23,24 +23,24 @@ class RegistrationPresenter implements RegistrationPresenterInterface
     /**
      * @var RecruiterGatewayInterface
      */
-    private RecruiterGatewayInterface $userGateway;
+    private RecruiterGatewayInterface $recruiterGateway;
 
 
     /**
      * RegistrationPresenter constructor.
      *
      * @param SessionInterface    $session
-     * @param RecruiterGatewayInterface $userGateway
+     * @param RecruiterGatewayInterface $recruiterGateway
      */
-    public function __construct(SessionInterface $session, RecruiterGatewayInterface $userGateway)
+    public function __construct(SessionInterface $session, RecruiterGatewayInterface $recruiterGateway)
     {
         $this->session = $session;
-        $this->userGateway = $userGateway;
+        $this->recruiterGateway = $recruiterGateway;
     }
 
     public function present(RegistrationResponse $response): void
     {
-        $this->viewModel = new RegistrationViewModel($this->userGateway->getUserByMail($response->getEmail()));
+        $this->viewModel = new RegistrationViewModel($this->recruiterGateway->getUserByMail($response->getEmail()));
 
         $this->session->getFlashBag()->add(
             "success",

@@ -41,7 +41,6 @@ class Login
 
         if ($user) {
             $passwordValid = password_verify($request->getPassword(), $user->getPassword());
-            dd($passwordValid);
         }
 
         $presenter->present(new LoginResponse($user, $passwordValid ?? false));

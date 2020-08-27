@@ -10,6 +10,7 @@ use MChabour\Domain\Security\Response\LoginResponse;
  */
 interface LoginPresenterInterface
 {
+
     /**
      * @param LoginResponse $response
      */

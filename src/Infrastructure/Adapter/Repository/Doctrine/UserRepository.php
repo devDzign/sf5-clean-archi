@@ -7,7 +7,6 @@ use App\Infrastructure\Doctrine\Entity\User as UserDoctrine;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use MChabour\Domain\Security\Gateway\UserGatewayInterface;
-use MChabour\Domain\Security\Model\Recruiter as RecruiterModel;
 use MChabour\Domain\Security\Model\User;
 
 /**
@@ -21,7 +20,6 @@ use MChabour\Domain\Security\Model\User;
  */
 class UserRepository extends ServiceEntityRepository implements UserGatewayInterface
 {
-
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, UserDoctrine::class);
@@ -51,12 +49,11 @@ class UserRepository extends ServiceEntityRepository implements UserGatewayInter
         }
 
         /** @var Recruiter $doctrineUser */
-        return new RecruiterModel(
+        return new User(
             $doctrineUser->getId(),
             $doctrineUser->getFirstName(),
             $doctrineUser->getLastName(),
             $doctrineUser->getEmail(),
-            $doctrineUser->getCompanyName(),
             $doctrineUser->getPassword(),
         );
     }

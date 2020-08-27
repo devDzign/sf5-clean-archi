@@ -23,10 +23,17 @@ class UserRepository implements UserGatewayInterface
 
     public function getUserByMail(string $email): ?User
     {
-        if ($email !== "used@email.com") {
+
+        if ($email !== "new_used@email.com") {
             return null;
         }
 
-        return new User(Uuid::uuid4(), 'mourad', 'chabour', 'used@mail.com', password_hash("password", PASSWORD_ARGON2I));
+        return new User(
+            Uuid::uuid4(),
+            'mourad',
+            'chabour',
+            'new_used@email.com',
+            password_hash("password", PASSWORD_ARGON2I)
+        );
     }
 }

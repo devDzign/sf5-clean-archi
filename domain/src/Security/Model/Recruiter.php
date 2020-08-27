@@ -50,7 +50,7 @@ class Recruiter extends User
         ?string $password
     ) {
 
-        parent::__construct($id,$firstName, $lastName, $email, $password);
+        parent::__construct($id, $firstName, $lastName, $email, $password);
         $this->companyName = $companyName;
     }
 

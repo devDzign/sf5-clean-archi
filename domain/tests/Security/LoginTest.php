@@ -48,7 +48,7 @@ class LoginTest extends TestCase
     public function testSuccessful(): void
     {
 
-        $request = LoginRequest::create("used@email.com", "password");
+        $request = LoginRequest::create("new_used@email.com", "password");
 
         $this->useCase->execute($request, $this->presenter);
 
@@ -57,7 +57,6 @@ class LoginTest extends TestCase
         $this->assertInstanceOf(User::class, $this->presenter->response->getUser());
 
         $this->assertTrue($this->presenter->response->isPasswordValid());
-
     }
 
     public function testIfEmailNotFound()
@@ -68,6 +67,6 @@ class LoginTest extends TestCase
 
         $this->assertInstanceOf(LoginResponse::class, $this->presenter->response);
 
-        $this->assertNull($this->presenter->response->getParticipant());
+        $this->assertNull($this->presenter->response->getUser());
     }
 }
