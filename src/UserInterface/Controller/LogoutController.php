@@ -12,7 +12,7 @@ class LogoutController
 {
 
     /**
-     * @Route("/login", name="app.logout", methods={"GET", "POST"})
+     * @Route("/logout", name="app.logout", methods={"GET", "POST"})
      */
     public function __invoke(): void
     {

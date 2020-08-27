@@ -32,7 +32,7 @@ class UserRepository implements UserGatewayInterface
             Uuid::uuid4(),
             'mourad',
             'chabour',
-            'new_used@email.com',
+            'used@email.com',
             password_hash("password", PASSWORD_ARGON2I)
         );
     }

@@ -121,7 +121,6 @@ class WebAuthenticator extends AbstractFormLoginAuthenticator implements LoginPr
             throw new UsernameNotFoundException('User not Found !');
         }
 
-
         $user = new User();
 
         return $user
