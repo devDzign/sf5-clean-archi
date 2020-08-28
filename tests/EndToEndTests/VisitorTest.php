@@ -16,11 +16,14 @@ class VisitorTest extends PantherTestCase
         $client = static::createPantherClient();
 
 
-        $crawler = $client->request(Request::METHOD_GET, '/registration');
+        $client->request(Request::METHOD_GET, '/');
+
+        $crawler = $client->clickLink("S'inscrire");
 
         $email = sprintf("email%s@email.com", random_int(1, 99999));
 
-        $form = $crawler->selectButton("S'inscrire")->form(
+
+        $form = $crawler->filter("form")->form(
             [
                 "registration[firstName]" => "mourad",
                 "registration[lastName]" => "chabour",
@@ -34,26 +37,29 @@ class VisitorTest extends PantherTestCase
         $client->submit($form);
 
 //        $client->takeScreenshot('var\screen.png');
-
 //        $client->getWebDriver()->findElement(WebDriverBy::className('btn'))->click();
+
         $client->waitFor('.FlashBag');
         $this->assertSelectorTextContains(
             '.FlashBag',
             "Bienvenue sur mon site ! Votre inscription a été effectuée avec succès !"
         );
 
-        $crawler = $client->request(Request::METHOD_GET, '/login');
-
+        sleep(2);
+        $crawler = $client->clickLink("Se connecter");
         $form = $crawler->filter("form")->form([
             "email" => $email,
             "password" => "admin1234"
         ]);
-
+        sleep(2);
         $client->submit($form);
-
+        sleep(2);
         $this->assertSelectorTextContains(
             '.FlashBag',
             'Bon retour sur Code Challenge !'
         );
+
+        $client->clickLink("Déconnexion");
+        sleep(2);
     }
 }
