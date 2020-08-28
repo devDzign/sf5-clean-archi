@@ -91,9 +91,16 @@
     },
     "scripts": {
         "database": [
+            "@docker-starter",
             "@database-dev",
             "@database-panther",
             "@database-test"
+        ],
+        "docker-starter": [
+            "docker-compose down",
+            "docker-compose ps",
+            "docker-compose -f docker-compose.yaml -f docker-compose.system.yaml -f docker-compose.test.yaml up -d",
+            "docker-compose ps"
         ],
         "database-panther": [
             "php bin/console doctrine:database:drop --if-exists --force --env=system",
