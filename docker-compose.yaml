@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  database:
+    image: postgres:11-alpine
+    environment:
+      POSTGRES_USER: main
+      POSTGRES_PASSWORD: main
+      POSTGRES_DB: db_clean_archi_prod
+    ports:
+      - 5432:5432
